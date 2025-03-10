@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox fx:id="allPain" prefHeight="818.0" prefWidth="862.0" styleClass="main-pane" stylesheets="@main.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.knalis.xsao.controllers.MainController">
+    <children>
+        <!-- Верхняя панель с заголовком и кнопкой настроек -->
+        <AnchorPane fx:id="topPanel" layoutX="8.0" layoutY="5.0" prefHeight="93.0" prefWidth="834.0" styleClass="inner-pane">
+            <children>
+                <Label layoutX="24.0" layoutY="26.0" prefHeight="33.0" prefWidth="132.0" styleClass="loading-big-label" text="AutoMute" textFill="WHITE" />
+                <HBox layoutX="630.0" layoutY="23.0" prefHeight="39.0" prefWidth="191.0">
+                    <children>
+                        <Button fx:id="settingsButton" mnemonicParsing="false" prefHeight="35.0" prefWidth="103.0" styleClass="settings-button" text="Settings" textOverrun="WORD_ELLIPSIS" />
+                        <Button fx:id="minimizeButton" prefHeight="35.0" prefWidth="40" styleClass="minimize-button" text="—" textAlignment="CENTER" textFill="white" />
+                        <Button fx:id="closeButton" prefHeight="35.0" prefWidth="40" styleClass="close-button" text="X" textAlignment="CENTER" textFill="white" />
+                    </children>
+                </HBox>
+
+            </children>
+        </AnchorPane>
+
+        <!-- Центральная панель -->
+        <AnchorPane fx:id="backPain" layoutX="8.0" layoutY="105.0" prefHeight="687.0" prefWidth="847.0" styleClass="servers-pane-background">
+            <children>
+            </children>
+        </AnchorPane>
+    </children>
+</VBox>
