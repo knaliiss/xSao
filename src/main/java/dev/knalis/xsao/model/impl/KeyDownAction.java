@@ -14,8 +14,4 @@ public class KeyDownAction extends Action implements IAction {
         inputManager.keyDown(winMan.getWindow() ,(Integer) value);
     }
 
-    @Override
-    public long getTime() {
-        return initialTime;
-    }
 }

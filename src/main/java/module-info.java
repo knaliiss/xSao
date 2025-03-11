@@ -14,5 +14,7 @@ module dev.knalis.xsao {
     requires com.sun.jna;
 
     opens dev.knalis.xsao to javafx.fxml;
+    opens dev.knalis.xsao.controllers to javafx.fxml; // <-- Добавлено для корректной работы FXML
+
     exports dev.knalis.xsao;
 }

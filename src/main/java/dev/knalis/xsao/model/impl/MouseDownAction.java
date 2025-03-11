@@ -14,8 +14,4 @@ public class MouseDownAction extends Action implements IAction {
         inputManager.mouseDown(winMan.getWindow() ,(Integer) value);
     }
 
-    @Override
-    public long getTime() {
-        return initialTime;
-    }
 }

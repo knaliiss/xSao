@@ -14,8 +14,4 @@ public class MouseUpAction extends Action implements IAction {
         inputManager.mouseUp(winMan.getWindow(), (Integer) value);
     }
 
-    @Override
-    public long getTime() {
-        return initialTime;
-    }
 }

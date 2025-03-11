@@ -5,6 +5,7 @@ import dev.knalis.xsao.utils.IPlayerUtil;
 
 public class PlayerUtil implements IPlayerUtil {
     ActionStorage storage = ActionStorage.getInstance();
+    static PlayerUtil instance;
     Thread playingThread;
     @Override
     public void startPlaying() {
@@ -12,15 +13,6 @@ public class PlayerUtil implements IPlayerUtil {
             for (int i = 0; i < storage.getList().size(); i++) {
                 IAction currentAction = storage.getList().get(i);
                 currentAction.action();
-                try {
-                    if (i < storage.getList().size() - 1) {
-                        IAction nextAction = storage.getList().get(i + 1);
-                        long sleepTime = nextAction.getTime() - currentAction.getTime();
-                        Thread.sleep(sleepTime);
-                    }
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
             }
         });
         playingThread.start();
@@ -32,4 +24,12 @@ public class PlayerUtil implements IPlayerUtil {
             playingThread.interrupt();
         }
     }
+
+    public static PlayerUtil getInstance(){
+        if(instance == null) {
+            instance = new PlayerUtil();
+        }
+        return instance;
+    }
+
 }
