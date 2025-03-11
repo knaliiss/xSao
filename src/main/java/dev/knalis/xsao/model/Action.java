@@ -1,14 +1,18 @@
 package dev.knalis.xsao.model;
 
+import dev.knalis.xsao.utils.InputManager;
+import dev.knalis.xsao.utils.WindowsManager;
 import lombok.Getter;
 
 @Getter
 public class Action {
-    final Long initialTime;
-    final Object action;
+    protected final Long initialTime;
+    protected final Object value;
+    protected WindowsManager winMan = WindowsManager.getInstance();
+    protected InputManager inputManager = InputManager.getInstance();
 
-    public Action(Object action) {
+    public Action(Object value) {
         this.initialTime = System.currentTimeMillis();
-        this.action = action;
+        this.value = value;
     }
 }

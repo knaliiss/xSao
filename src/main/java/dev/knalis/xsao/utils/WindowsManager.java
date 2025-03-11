@@ -15,7 +15,7 @@ public class WindowsManager {
         window = User32.INSTANCE.GetForegroundWindow();
     }
 
-    private WindowsManager getInstance() {
+    public static WindowsManager getInstance() {
         if (instance == null) instance = new WindowsManager();
         return instance;
     }

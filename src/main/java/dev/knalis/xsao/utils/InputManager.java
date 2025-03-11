@@ -40,13 +40,15 @@ public class InputManager {
 
     @SneakyThrows
     public void mouseDown(HWND targetWindow, int mouseCode) {
-        User32.INSTANCE.PostMessage(targetWindow, WinUser.WM_LBUTTONDOWN, new WPARAM(mouseCode), new LPARAM(0));
-        Thread.sleep(20);
+//        User32.INSTANCE.PostMessage(targetWindow, WinUser.WM_LBUTTONDOWN, new WPARAM(mouseCode), new LPARAM(0));
+//        Thread.sleep(20);
+        //TODO
     }
 
     @SneakyThrows
     public void mouseUp(HWND targetWindow, int mouseCode) {
-        User32.INSTANCE.PostMessage(targetWindow, WinUser.WM_LBUTTONUP, new WPARAM(mouseCode), new LPARAM(0));
-        Thread.sleep(50);
+//        User32.INSTANCE.PostMessage(targetWindow, WinUser.WM_LBUTTONUP, new WPARAM(mouseCode), new LPARAM(0));
+//        Thread.sleep(50);
+        //TODO
     }
 }
