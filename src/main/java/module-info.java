@@ -11,6 +11,8 @@ module dev.knalis.xsao {
     requires eu.hansolo.tilesfx;
     requires static lombok;
     requires com.github.kwhat.jnativehook;
+    requires com.sun.jna.platform;
+    requires com.sun.jna;
 
     opens dev.knalis.xsao to javafx.fxml;
     exports dev.knalis.xsao;

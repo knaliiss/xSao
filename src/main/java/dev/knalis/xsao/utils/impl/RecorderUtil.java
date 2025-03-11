@@ -5,12 +5,9 @@ import com.github.kwhat.jnativehook.NativeHookException;
 import com.github.kwhat.jnativehook.keyboard.NativeKeyEvent;
 import com.github.kwhat.jnativehook.keyboard.NativeKeyListener;
 import com.github.kwhat.jnativehook.mouse.NativeMouseListener;
-import dev.knalis.xsao.model.RecordedPoint;
 import dev.knalis.xsao.utils.IRecorderUtil;
 
-import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.Map;
 
 public class RecorderUtil implements IRecorderUtil, NativeKeyListener, NativeMouseListener {
     private final LinkedList<RecordedPoint> actions = new LinkedList<>();
