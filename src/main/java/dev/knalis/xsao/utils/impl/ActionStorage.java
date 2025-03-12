@@ -6,7 +6,6 @@ import dev.knalis.xsao.utils.IStorage;
 import java.util.LinkedList;
 
 public class ActionStorage implements IStorage<IAction> {
-    private static ActionStorage instance;
     private final LinkedList<IAction> actions = new LinkedList<>();
 
     @Override
@@ -29,10 +28,4 @@ public class ActionStorage implements IStorage<IAction> {
         actions.clear();
     }
 
-    public static ActionStorage getInstance(){
-        if (instance == null){
-            instance = new ActionStorage();
-        }
-        return instance;
-    }
 }
