@@ -7,24 +7,31 @@ import javafx.scene.input.KeyCode;
 import java.util.HashMap;
 import java.util.List;
 
-public class BindsStorage implements IStorage {
+public class BindsStorage {
     private static BindsStorage instance;
-    private HashMap<Bind, List<KeyCode>> binds;
+    private final HashMap<List<KeyCode>, Bind> binds = new HashMap<>();
 
-    @Override
-    public void add(Object obj) {
-
+    public static BindsStorage getInstance() {
+        if (instance == null) {
+            instance = new BindsStorage();
+        }
+        return instance;
     }
 
-    @Override
-    public void remove(Object obj) {
+
+    public void add(List<KeyCode> keys, Bind bind) {
+        binds.put(keys, bind);
     }
 
-    @Override
+    public void remove(List<KeyCode> keys) {
+        binds.remove(keys);
+    }
+
     public void clear() {
+        binds.clear();
     }
-    @Override
-    public void add(KeyCode key, Bind value){
-        binds.put(key, value);
+
+    public Bind getBind(List<KeyCode> keys) {
+        return binds.get(keys);
     }
 }
