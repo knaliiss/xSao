@@ -7,6 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
+<?import javafx.scene.control.TextField?>
 <Pane fx:id="allPain" prefHeight="403.0" prefWidth="634.0" styleClass="main-pane" stylesheets="@main.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.knalis.xsao.controllers.MainController">
     <children>
         <!-- Верхняя панель с заголовком и кнопкой настроек -->
@@ -15,16 +16,17 @@
                 <Label layoutX="14.0" layoutY="30.0" prefHeight="33.0" prefWidth="65.0" styleClass="loading-big-label" text="xSao" textFill="WHITE" />
                   <Button fx:id="minimizeButton" layoutX="513.0" layoutY="29.0" prefHeight="35.0" prefWidth="40" styleClass="minimize-button" text="—" textAlignment="CENTER" textFill="white" />
                   <Button fx:id="closeButton" layoutX="553.0" layoutY="29.0" prefHeight="35.0" prefWidth="40" styleClass="close-button" text="X" textAlignment="CENTER" textFill="white" />
-
             </children>
         </Pane>
 
         <!-- Центральная панель -->
         <AnchorPane fx:id="backPain" layoutX="8.0" layoutY="105.0" prefHeight="277.0" prefWidth="619.0" styleClass="servers-pane-background">
          <children>
-            <Button fx:id="recordButton" layoutX="52.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="Button" styleClass="cristalix-play-button" />
-            <Button fx:id="playButton" layoutX="52.0" layoutY="53.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="Button" styleClass="cristalix-play-button" />
-            <Button fx:id="winButton" layoutX="52.0" layoutY="89.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="Button" styleClass="cristalix-play-button" />
+             <TextField fx:id="nameTextField" layoutX="52.0" layoutY="140.0" prefHeight="39.0" prefWidth="205.0" promptText="Name" styleClass="cristalix-text-field" />
+            <Button fx:id="recordButton" layoutX="52.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="start rec" styleClass="cristalix-play-button" />
+            <Button fx:id="playButton" layoutX="52.0" layoutY="53.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="play" styleClass="cristalix-play-button" />
+            <Button fx:id="winButton" layoutX="52.0" layoutY="89.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="win" styleClass="cristalix-play-button" />
+            <Button fx:id="createButton" layoutX="10.0" layoutY="140.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="40.0" text="+" styleClass="cristalix-play-button" />
             <ComboBox fx:id="scriptsComboBox" layoutX="52.0" layoutY="182.0" prefHeight="39.0" prefWidth="195.0" />
             <TextArea fx:id="scriptTextArea" layoutX="355.0" layoutY="14.0" prefHeight="251.0" prefWidth="240.0" />
          </children>

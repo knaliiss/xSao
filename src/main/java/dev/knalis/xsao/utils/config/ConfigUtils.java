@@ -1,11 +1,13 @@
 package dev.knalis.xsao.utils.config;
 
+import dev.knalis.xsao.interfaces.IConfig;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-public class ConfigUtils implements IConfig{
+public class ConfigUtils implements IConfig {
     private static ConfigUtils instance;
     private final Properties properties = new Properties();
     private final String configFilePath = "src/main/resources/xSao.properties";

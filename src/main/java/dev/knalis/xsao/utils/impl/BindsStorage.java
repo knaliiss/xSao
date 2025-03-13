@@ -1,6 +1,6 @@
 package dev.knalis.xsao.utils.impl;
 
-import dev.knalis.xsao.model.Bind;
+import dev.knalis.xsao.interfaces.Bind;
 
 import java.util.HashMap;
 
@@ -15,17 +15,8 @@ public class BindsStorage {
         return instance;
     }
 
-
     public void add(Integer key, Bind bind) {
         binds.put(key, bind);
-    }
-
-    public void remove(Integer key) {
-        binds.remove(key);
-    }
-
-    public void clear() {
-        binds.clear();
     }
 
     public Bind getBind(Integer key) {

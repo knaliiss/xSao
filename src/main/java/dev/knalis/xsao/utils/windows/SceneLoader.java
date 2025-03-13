@@ -1,5 +1,6 @@
 package dev.knalis.xsao.utils.windows;
 
+import dev.knalis.xsao.interfaces.ISceneLoader;
 import dev.knalis.xsao.xSao;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

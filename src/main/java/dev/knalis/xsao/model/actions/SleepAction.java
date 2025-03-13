@@ -1,7 +1,7 @@
-package dev.knalis.xsao.model.impl;
+package dev.knalis.xsao.model.actions;
 
 import dev.knalis.xsao.model.Action;
-import dev.knalis.xsao.model.IAction;
+import dev.knalis.xsao.interfaces.IAction;
 import lombok.SneakyThrows;
 
 public class SleepAction extends Action implements IAction {

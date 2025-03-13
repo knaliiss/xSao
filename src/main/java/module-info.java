@@ -12,6 +12,7 @@ module dev.knalis.xsao {
     requires com.github.kwhat.jnativehook;
     requires com.sun.jna.platform;
     requires com.sun.jna;
+    requires com.google.gson;
 
     opens dev.knalis.xsao to javafx.fxml;
     opens dev.knalis.xsao.controllers to javafx.fxml; // <-- Добавлено для корректной работы FXML

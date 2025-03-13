@@ -1,4 +1,4 @@
-package dev.knalis.xsao.utils.config;
+package dev.knalis.xsao.interfaces;
 
 public interface IConfig {
     void save();

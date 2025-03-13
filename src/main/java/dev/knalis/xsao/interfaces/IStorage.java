@@ -1,4 +1,4 @@
-package dev.knalis.xsao.utils;
+package dev.knalis.xsao.interfaces;
 
 
 import java.util.List;

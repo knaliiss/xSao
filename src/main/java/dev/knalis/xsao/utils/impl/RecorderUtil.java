@@ -6,15 +6,15 @@ import com.github.kwhat.jnativehook.keyboard.NativeKeyEvent;
 import com.github.kwhat.jnativehook.keyboard.NativeKeyListener;
 import com.github.kwhat.jnativehook.mouse.NativeMouseEvent;
 import com.github.kwhat.jnativehook.mouse.NativeMouseListener;
-import dev.knalis.xsao.model.IAction;
-import dev.knalis.xsao.model.impl.*;
-import dev.knalis.xsao.utils.IRecorderUtil;
-import dev.knalis.xsao.utils.IStorage;
+import dev.knalis.xsao.controllers.MainController;
+import dev.knalis.xsao.model.actions.*;
+import dev.knalis.xsao.utils.ActionStorageManager;
+import dev.knalis.xsao.interfaces.IRecorderUtil;
 
 public class RecorderUtil implements IRecorderUtil, NativeKeyListener, NativeMouseListener {
     private static RecorderUtil instance;
     volatile boolean isRecording = false;
-    IStorage<IAction> storage = ActionStorage.getInstance();
+    ActionStorage storage = ActionStorageManager.getInstance().getStorage(MainController.getInstance().getSelectedScript());
     long lastAdd;
 
     @Override

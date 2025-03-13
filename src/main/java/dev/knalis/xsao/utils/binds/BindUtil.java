@@ -2,7 +2,7 @@ package dev.knalis.xsao.utils.binds;
 
 import com.github.kwhat.jnativehook.keyboard.NativeKeyEvent;
 import com.github.kwhat.jnativehook.keyboard.NativeKeyListener;
-import dev.knalis.xsao.model.Bind;
+import dev.knalis.xsao.interfaces.Bind;
 import dev.knalis.xsao.utils.impl.BindsStorage;
 import lombok.Getter;
 import lombok.Setter;
@@ -27,4 +27,5 @@ public class BindUtil implements NativeKeyListener {
     public void switchBind(Bind bind, Integer newKey) {
         BindsStorage.getInstance().replaceKey(bind.getKey(), newKey);
     }
+
 }

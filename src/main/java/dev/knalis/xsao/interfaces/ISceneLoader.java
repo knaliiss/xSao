@@ -1,4 +1,4 @@
-package dev.knalis.xsao.utils.windows;
+package dev.knalis.xsao.interfaces;
 
 public interface ISceneLoader {
     void load();

@@ -1,12 +1,15 @@
 package dev.knalis.xsao.utils.impl;
 
-import dev.knalis.xsao.model.IAction;
-import dev.knalis.xsao.utils.IPlayerUtil;
+import dev.knalis.xsao.controllers.MainController;
+import dev.knalis.xsao.interfaces.IAction;
+import dev.knalis.xsao.utils.ActionStorageManager;
+import dev.knalis.xsao.interfaces.IPlayerUtil;
 
 public class PlayerUtil implements IPlayerUtil {
-    ActionStorage storage = ActionStorage.getInstance();
+    ActionStorage storage = ActionStorageManager.getInstance().getStorage(MainController.getInstance().getSelectedScript());
     static PlayerUtil instance;
     Thread playingThread;
+
     @Override
     public void startPlaying() {
         playingThread = new Thread(() -> {

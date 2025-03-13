@@ -1,7 +1,7 @@
-package dev.knalis.xsao.model.impl;
+package dev.knalis.xsao.model.actions;
 
 import dev.knalis.xsao.model.Action;
-import dev.knalis.xsao.model.IAction;
+import dev.knalis.xsao.interfaces.IAction;
 
 public class KeyDownAction extends Action implements IAction {
 
