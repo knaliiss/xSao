@@ -11,7 +11,15 @@ public class MouseUpAction extends Action implements IAction {
 
     @Override
     public void action() {
-        inputManager.mouseUp(winMan.getWindow(), (Integer) value);
+        if (value instanceof Double) {
+            inputManager.mouseUp(winMan.getWindow(), ((Double) value).intValue());
+        }
     }
 
+    @Override
+    public String toString() {
+        return "MouseUpAction{" +
+                "mouse=" + value +
+                '}';
+    }
 }

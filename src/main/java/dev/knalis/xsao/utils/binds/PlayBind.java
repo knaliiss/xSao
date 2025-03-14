@@ -1,6 +1,8 @@
 package dev.knalis.xsao.utils.binds;
 
+import dev.knalis.xsao.controllers.MainController;
 import dev.knalis.xsao.interfaces.Bind;
+import dev.knalis.xsao.utils.ActionStorageManager;
 import dev.knalis.xsao.utils.impl.PlayerUtil;
 import lombok.Data;
 import lombok.Getter;
@@ -19,14 +21,18 @@ public class PlayBind implements Bind {
 
     @Override
     public void use() {
+        if (ActionStorageManager.getInstance().getStorage(MainController.getInstance().getSelectedScript()).getList().isEmpty()) return;
         if (playing) PlayerUtil.getInstance().stopPlaying();
         else PlayerUtil.getInstance().startPlaying();
-
         playing = !playing;
     }
 
     @Override
     public Integer getKey() {
         return key;
+    }
+
+    public String toString() {
+        return "PlayBind";
     }
 }

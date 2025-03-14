@@ -25,8 +25,6 @@ public class ConfigUtils implements IConfig {
         return instance;
     }
 
-
-
     @Override
     public void save() {
         try (FileOutputStream output = new FileOutputStream(configFilePath)) {

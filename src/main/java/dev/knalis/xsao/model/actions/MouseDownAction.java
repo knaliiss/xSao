@@ -11,7 +11,15 @@ public class MouseDownAction extends Action implements IAction {
 
     @Override
     public void action() {
-        inputManager.mouseDown(winMan.getWindow() ,(Integer) value);
+        if (value instanceof Double) {
+            inputManager.mouseDown(winMan.getWindow(), ((Double) value).intValue());
+        }
     }
 
+    @Override
+    public String toString() {
+        return "MouseDownAction{" +
+                "mouse=" + value +
+                '}';
+    }
 }

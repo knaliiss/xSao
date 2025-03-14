@@ -11,7 +11,15 @@ public class KeyUpAction extends Action implements IAction {
 
     @Override
     public void action() {
-        inputManager.keyUp(winMan.getWindow() ,(Integer) value);
+        if (value instanceof Double) {
+            inputManager.keyUp(winMan.getWindow(), ((Double) value).intValue());
+        }
     }
 
+    @Override
+    public String toString() {
+        return "KeyUpAction{" +
+                "key=" + value +
+                '}';
+    }
 }

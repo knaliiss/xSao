@@ -12,6 +12,15 @@ public class SleepAction extends Action implements IAction {
     @Override
     @SneakyThrows
     public void action() {
-        Thread.sleep((Long) value);
+        if (value instanceof Double) {
+            Thread.sleep(((Double) value).longValue());
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "SleepAction{" +
+                "sleep=" + value +
+                " ms}";
     }
 }

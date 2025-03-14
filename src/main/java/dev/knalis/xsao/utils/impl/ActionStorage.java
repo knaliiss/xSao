@@ -31,5 +31,4 @@ public class ActionStorage implements IStorage<IAction> {
     public void clear() {
         actions.clear();
     }
-
 }

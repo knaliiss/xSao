@@ -13,6 +13,9 @@ module dev.knalis.xsao {
     requires com.sun.jna.platform;
     requires com.sun.jna;
     requires com.google.gson;
+    opens dev.knalis.xsao.utils.impl to com.google.gson;
+    opens dev.knalis.xsao.model to com.google.gson;
+    opens dev.knalis.xsao.utils to com.google.gson;
 
     opens dev.knalis.xsao to javafx.fxml;
     opens dev.knalis.xsao.controllers to javafx.fxml; // <-- Добавлено для корректной работы FXML

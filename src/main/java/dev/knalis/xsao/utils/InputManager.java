@@ -7,10 +7,17 @@ import com.sun.jna.platform.win32.WinDef.LPARAM;
 import com.sun.jna.platform.win32.WinDef.WPARAM;
 import com.sun.jna.platform.win32.WinUser;
 import com.sun.jna.platform.win32.WinDef.HWND;
+import com.sun.jna.win32.W32APIOptions;
 import lombok.SneakyThrows;
 
 public class InputManager {
     private static InputManager instance;
+    public static final int WM_LBUTTONDOWN = 0x0201;
+    public static final int WM_RBUTTONDOWN = 0x0204;
+    public static final int WM_MBUTTONDOWN = 0x0207;
+    public static final int WM_LBUTTONUP = 0x0202;
+    public static final int WM_RBUTTONUP = 0x0205;
+    public static final int WM_MBUTTONUP = 0x0208;
 
     public static InputManager getInstance() {
         if (instance == null) instance = new InputManager();
@@ -18,37 +25,54 @@ public class InputManager {
     }
 
     public interface ExtendedUser32 extends Library {
-        ExtendedUser32 INSTANCE = Native.load("user32", ExtendedUser32.class);
+        ExtendedUser32 INSTANCE = Native.load("user32", ExtendedUser32.class, W32APIOptions.DEFAULT_OPTIONS);
+
         int MapVirtualKey(int uCode, int uMapType);
     }
 
     @SneakyThrows
     public void keyDown(HWND targetWindow, int keyCode) {
         int scanCode = ExtendedUser32.INSTANCE.MapVirtualKey(keyCode, 0);
+        System.out.println("ScanCode: " + scanCode + " | KeyCode: " + keyCode);
         long lParamDown = 0x00000001L | ((long) scanCode << 16);
         User32.INSTANCE.PostMessage(targetWindow, WinUser.WM_KEYDOWN, new WPARAM(keyCode), new LPARAM(lParamDown));
-        Thread.sleep(20);
     }
 
     @SneakyThrows
     public void keyUp(HWND targetWindow, int keyCode) {
         int scanCode = ExtendedUser32.INSTANCE.MapVirtualKey(keyCode, 0);
+        System.out.println("ScanCode: " + scanCode + " | KeyCode: " + keyCode);
         long lParamUp = 0xC0000001L | ((long) scanCode << 16);
         User32.INSTANCE.PostMessage(targetWindow, WinUser.WM_KEYUP, new WPARAM(keyCode), new LPARAM(lParamUp));
-        Thread.sleep(50);
     }
 
-    @SneakyThrows
+
     public void mouseDown(HWND targetWindow, int mouseCode) {
-//        User32.INSTANCE.PostMessage(targetWindow, WinUser.WM_LBUTTONDOWN, new WPARAM(mouseCode), new LPARAM(0));
-//        Thread.sleep(20);
-        //TODO
+        int message = switch (mouseCode) {
+            case 1 -> WM_LBUTTONDOWN;
+            case 2 -> WM_RBUTTONDOWN;
+            case 3 -> WM_MBUTTONDOWN;
+            default -> throw new IllegalArgumentException("Invalid mouse button code: " + mouseCode);
+        };
+        User32.INSTANCE.PostMessage(targetWindow, message, new WPARAM(0), new LPARAM(0));
+
     }
 
-    @SneakyThrows
     public void mouseUp(HWND targetWindow, int mouseCode) {
-//        User32.INSTANCE.PostMessage(targetWindow, WinUser.WM_LBUTTONUP, new WPARAM(mouseCode), new LPARAM(0));
-//        Thread.sleep(50);
-        //TODO
+        int message = switch (mouseCode) {
+            case 1 -> WM_LBUTTONUP;
+            case 2 -> WM_RBUTTONUP;
+            case 3 -> WM_MBUTTONUP;
+            default -> throw new IllegalArgumentException("Invalid mouse button code: " + mouseCode);
+        };
+        User32.INSTANCE.PostMessage(targetWindow, message, new WPARAM(0), new LPARAM(0));
+
     }
+
+    public void testMapVirtualKey(int keyCode) {
+        int scanCode = ExtendedUser32.INSTANCE.MapVirtualKey(keyCode, 0);
+        int scanCodeVSC = ExtendedUser32.INSTANCE.MapVirtualKey(keyCode, WinUser.MAPVK_VK_TO_VSC);
+        System.out.println("KeyCode: " + keyCode + " | ScanCode (Type 0): " + scanCode + " | ScanCode (VSC): " + scanCodeVSC);
+    }
+
 }

@@ -7,7 +7,7 @@ import lombok.Getter;
 
 @Data
 public class RecordBind implements Bind {
-    static boolean recording = false;
+    boolean recording = false;
     private final Integer key;
     @Getter
     private static RecordBind instance;
@@ -22,10 +22,16 @@ public class RecordBind implements Bind {
         if (recording) RecorderUtil.getInstance().stopRecording();
         else RecorderUtil.getInstance().startRecording();
         recording = !recording;
+        System.out.println("Recording: " + recording);
     }
 
     @Override
     public Integer getKey() {
         return key;
     }
+
+    public String toString() {
+        return "RecordBind";
+    }
+
 }

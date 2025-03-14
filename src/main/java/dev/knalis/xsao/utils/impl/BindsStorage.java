@@ -15,8 +15,8 @@ public class BindsStorage {
         return instance;
     }
 
-    public void add(Integer key, Bind bind) {
-        binds.put(key, bind);
+    public void add(Bind bind) {
+        binds.put(bind.getKey(), bind);
     }
 
     public Bind getBind(Integer key) {
@@ -28,6 +28,10 @@ public class BindsStorage {
         if (bind != null) {
             binds.put(newKey, bind);
         }
+    }
+
+    public boolean isBindExist(Integer key) {
+        return binds.containsKey(key);
     }
 
 }
