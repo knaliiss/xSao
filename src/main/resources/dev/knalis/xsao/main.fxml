@@ -18,8 +18,8 @@
         <AnchorPane fx:id="backPain" layoutX="8.0" layoutY="105.0" prefHeight="277.0" prefWidth="619.0" styleClass="servers-pane-background">
          <children>
              <TextField fx:id="nameTextField" layoutX="52.0" layoutY="140.0" prefHeight="39.0" prefWidth="205.0" promptText="Name" styleClass="cristalix-text-field" />
-            <Button fx:id="recordButton" layoutX="52.0" layoutY="14.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="105.0" styleClass="cristalix-play-button" text="rec" />
-            <Button fx:id="playButton" layoutX="52.0" layoutY="53.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="105.0" styleClass="cristalix-play-button" text="play [T]" />
+            <Button fx:id="recordButton" layoutX="52.0" layoutY="14.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="144.0" styleClass="cristalix-play-button" text="rec" />
+            <Button fx:id="playButton" layoutX="52.0" layoutY="53.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="144.0" styleClass="cristalix-play-button" text="play" />
             <Button fx:id="winButton" layoutX="52.0" layoutY="89.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="105.0" styleClass="cristalix-play-button" text="win" />
             <Button fx:id="createButton" layoutX="10.0" layoutY="140.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="40.0" styleClass="cristalix-play-button" text="+" />
             <Button fx:id="removeButton" layoutX="10.0" layoutY="180.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="40.0" styleClass="cristalix-close-button" text="-" />

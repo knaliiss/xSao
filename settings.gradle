@@ -1,1 +1,8 @@
+pluginManagement {
+    repositories {
+        mavenCentral()        // Для зависимостей
+        gradlePluginPortal()  // Обязателен для плагинов Gradle, таких как org.beryx.jlink
+    }
+}
+
 rootProject.name = "xSao"

@@ -3,6 +3,7 @@ package dev.knalis.xsao.utils;
 import com.sun.jna.Library;
 import com.sun.jna.Native;
 import com.sun.jna.platform.win32.User32;
+import com.sun.jna.platform.win32.WinDef;
 import com.sun.jna.platform.win32.WinDef.LPARAM;
 import com.sun.jna.platform.win32.WinDef.WPARAM;
 import com.sun.jna.platform.win32.WinUser;
@@ -33,7 +34,6 @@ public class InputManager {
     @SneakyThrows
     public void keyDown(HWND targetWindow, int keyCode) {
         int scanCode = ExtendedUser32.INSTANCE.MapVirtualKey(keyCode, 0);
-        System.out.println("ScanCode: " + scanCode + " | KeyCode: " + keyCode);
         long lParamDown = 0x00000001L | ((long) scanCode << 16);
         User32.INSTANCE.PostMessage(targetWindow, WinUser.WM_KEYDOWN, new WPARAM(keyCode), new LPARAM(lParamDown));
     }
@@ -41,38 +41,28 @@ public class InputManager {
     @SneakyThrows
     public void keyUp(HWND targetWindow, int keyCode) {
         int scanCode = ExtendedUser32.INSTANCE.MapVirtualKey(keyCode, 0);
-        System.out.println("ScanCode: " + scanCode + " | KeyCode: " + keyCode);
         long lParamUp = 0xC0000001L | ((long) scanCode << 16);
         User32.INSTANCE.PostMessage(targetWindow, WinUser.WM_KEYUP, new WPARAM(keyCode), new LPARAM(lParamUp));
     }
 
 
     public void mouseDown(HWND targetWindow, int mouseCode) {
-        int message = switch (mouseCode) {
-            case 1 -> WM_LBUTTONDOWN;
-            case 2 -> WM_RBUTTONDOWN;
-            case 3 -> WM_MBUTTONDOWN;
-            default -> throw new IllegalArgumentException("Invalid mouse button code: " + mouseCode);
-        };
-        User32.INSTANCE.PostMessage(targetWindow, message, new WPARAM(0), new LPARAM(0));
+        mouseHandle(targetWindow, mouseCode, WM_LBUTTONDOWN, WM_RBUTTONDOWN, WM_MBUTTONDOWN);
 
     }
 
     public void mouseUp(HWND targetWindow, int mouseCode) {
+        mouseHandle(targetWindow, mouseCode, WM_LBUTTONUP, WM_RBUTTONUP, WM_MBUTTONUP);
+
+    }
+
+    private void mouseHandle(HWND targetWindow, int mouseCode, int wmLbuttonup, int wmRbuttonup, int wmMbuttonup) {
         int message = switch (mouseCode) {
-            case 1 -> WM_LBUTTONUP;
-            case 2 -> WM_RBUTTONUP;
-            case 3 -> WM_MBUTTONUP;
+            case 1 -> wmLbuttonup;
+            case 2 -> wmRbuttonup;
+            case 3 -> wmMbuttonup;
             default -> throw new IllegalArgumentException("Invalid mouse button code: " + mouseCode);
         };
         User32.INSTANCE.PostMessage(targetWindow, message, new WPARAM(0), new LPARAM(0));
-
     }
-
-    public void testMapVirtualKey(int keyCode) {
-        int scanCode = ExtendedUser32.INSTANCE.MapVirtualKey(keyCode, 0);
-        int scanCodeVSC = ExtendedUser32.INSTANCE.MapVirtualKey(keyCode, WinUser.MAPVK_VK_TO_VSC);
-        System.out.println("KeyCode: " + keyCode + " | ScanCode (Type 0): " + scanCode + " | ScanCode (VSC): " + scanCodeVSC);
-    }
-
 }

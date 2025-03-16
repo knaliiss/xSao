@@ -84,6 +84,39 @@
     -fx-border-width: 2px;
 }
 
+/* Кастомизация вертикального скроллбара */
+.scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-pref-width: 14px;
+}
+
+/* Трек скроллбара */
+.scroll-bar:vertical .track {
+    -fx-background-color: rgb(36, 36, 36);
+    -fx-background-radius: 8px;
+    -fx-padding: 2px;
+}
+
+/* Ползунок (thumb) скроллбара */
+.scroll-bar:vertical .thumb {
+    -fx-background-color: linear-gradient(to bottom, rgb(60, 60, 60), rgb(80, 80, 80));
+    -fx-background-insets: 2;
+    -fx-background-radius: 8px;
+}
+
+/* При наведении меняется оттенок ползунка */
+.scroll-bar:vertical .thumb:hover {
+    -fx-background-color: linear-gradient(to bottom, rgb(80, 80, 80), rgb(100, 100, 100));
+}
+
+/* Кнопки скроллбара делаем прозрачными */
+.scroll-bar:vertical .increment-button,
+.scroll-bar:vertical .decrement-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+
 
 .cristalix-play-button {
     -fx-cursor: hand;

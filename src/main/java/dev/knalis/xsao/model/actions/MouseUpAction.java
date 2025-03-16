@@ -13,6 +13,8 @@ public class MouseUpAction extends Action implements IAction {
     public void action() {
         if (value instanceof Double) {
             inputManager.mouseUp(winMan.getWindow(), ((Double) value).intValue());
+        } else if (value instanceof Integer) {
+            inputManager.mouseUp(winMan.getWindow(), (Integer) value);
         }
     }
 

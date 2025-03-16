@@ -12,9 +12,9 @@ public class SleepAction extends Action implements IAction {
     @Override
     @SneakyThrows
     public void action() {
-        if (value instanceof Double) {
-            Thread.sleep(((Double) value).longValue());
-        }
+        if (value instanceof Double) value = ((Double) value).longValue();
+        else if (value instanceof Integer) value = ((Integer) value).longValue();
+        Thread.sleep((Long) value);
     }
 
     @Override

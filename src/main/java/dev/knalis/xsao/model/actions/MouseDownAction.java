@@ -13,6 +13,8 @@ public class MouseDownAction extends Action implements IAction {
     public void action() {
         if (value instanceof Double) {
             inputManager.mouseDown(winMan.getWindow(), ((Double) value).intValue());
+        } else if (value instanceof Integer) {
+            inputManager.mouseDown(winMan.getWindow(), (Integer) value);
         }
     }
 

@@ -12,9 +12,13 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.util.logging.Logger;
+
+import java.io.IOException;
+import java.util.logging.LogManager;
 
 public class xSao extends Application {
-
+    static Logger logger = Logger.getLogger(xSao.class.getName());
 
     @Override
     public void start(Stage stage) {
@@ -22,23 +26,29 @@ public class xSao extends Application {
         String fxml = ConfigUtils.getInstance().get("fxml.main");
         SceneLoader sceneLoader = new SceneLoader(fxml, stage);
         sceneLoader.load();
+
     }
 
     public static void main(String[] args) {
+
         try {
             new PlayBind(Integer.parseInt(ConfigUtils.getInstance().get("key.play")));
             new RecordBind(Integer.parseInt(ConfigUtils.getInstance().get("key.record")));
             BindsStorage.getInstance().add(PlayBind.getInstance());
             BindsStorage.getInstance().add(RecordBind.getInstance());
         } catch (Exception e) {
+            logger.severe("Error while initializing binds");
             throw new RuntimeException("Error while initializing binds", e);
         }
         try {
             ActionStorageManager.getInstance().loadAll();
         } catch (IOException e) {
+            logger.severe("Error while loading actions");
             throw new RuntimeException(e);
         }
         BindUtil.getInstance().register();
         launch();
+
     }
+
 }

@@ -13,6 +13,8 @@ public class KeyUpAction extends Action implements IAction {
     public void action() {
         if (value instanceof Double) {
             inputManager.keyUp(winMan.getWindow(), ((Double) value).intValue());
+        } else if (value instanceof Integer) {
+            inputManager.keyUp(winMan.getWindow(), (Integer) value);
         }
     }
 

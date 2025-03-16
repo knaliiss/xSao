@@ -6,7 +6,7 @@ import lombok.Getter;
 
 @Getter
 public class Action {
-    protected final Object value;
+    protected Object value;
     protected WindowsManager winMan = WindowsManager.getInstance();
     protected InputManager inputManager = InputManager.getInstance();
 

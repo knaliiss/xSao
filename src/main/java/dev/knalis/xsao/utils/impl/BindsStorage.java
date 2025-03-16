@@ -30,6 +30,10 @@ public class BindsStorage {
         }
     }
 
+    public HashMap<Integer, Bind> getBinds() {
+        return binds;
+    }
+
     public boolean isBindExist(Integer key) {
         return binds.containsKey(key);
     }

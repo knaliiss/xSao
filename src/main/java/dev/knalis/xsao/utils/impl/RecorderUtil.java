@@ -6,33 +6,25 @@ import com.github.kwhat.jnativehook.keyboard.NativeKeyEvent;
 import com.github.kwhat.jnativehook.keyboard.NativeKeyListener;
 import com.github.kwhat.jnativehook.mouse.NativeMouseEvent;
 import com.github.kwhat.jnativehook.mouse.NativeMouseListener;
-import dev.knalis.xsao.controllers.MainController;
-import dev.knalis.xsao.interfaces.IAction;
-import dev.knalis.xsao.interfaces.IRecorderUtil;
-import dev.knalis.xsao.model.actions.KeyDownAction;
-import dev.knalis.xsao.model.actions.KeyUpAction;
-import dev.knalis.xsao.model.actions.MouseDownAction;
-import dev.knalis.xsao.model.actions.MouseUpAction;
-import dev.knalis.xsao.model.actions.SleepAction;
-import dev.knalis.xsao.utils.ActionStorageManager;
-import dev.knalis.xsao.utils.InputManager;
-import dev.knalis.xsao.utils.binds.BindUtil;
-import dev.knalis.xsao.utils.impl.BindsStorage;
 import com.sun.jna.platform.win32.WinUser;
+import dev.knalis.xsao.controllers.MainController;
+import dev.knalis.xsao.interfaces.IRecorderUtil;
+import dev.knalis.xsao.model.actions.*;
+import dev.knalis.xsao.utils.ActionStorageManager;
 
 import java.io.IOException;
-import java.util.List;
 
-import static dev.knalis.xsao.utils.InputManager.*;
+import static dev.knalis.xsao.utils.InputManager.ExtendedUser32;
 
 public class RecorderUtil implements IRecorderUtil, NativeKeyListener, NativeMouseListener {
     private static RecorderUtil instance;
     volatile boolean isRecording = false;
-    ActionStorage storage = ActionStorageManager.getInstance().getStorage(MainController.getInstance().getSelectedScript());
+    ActionStorage storage;
     long lastAdd;
 
     @Override
     public void startRecording() {
+        storage = ActionStorageManager.getInstance().getStorage(MainController.getInstance().getSelectedScript());
         storage.clear();
         lastAdd = 0;
         isRecording = true;
@@ -65,8 +57,6 @@ public class RecorderUtil implements IRecorderUtil, NativeKeyListener, NativeMou
 
         int scanCode = e.getKeyCode();
         int virtualKeyCode = ExtendedUser32.INSTANCE.MapVirtualKey(scanCode, WinUser.MAPVK_VSC_TO_VK);
-
-        System.out.println("VirtualKeyCode: " + virtualKeyCode);
 
         if (BindsStorage.getInstance().isBindExist(virtualKeyCode)) return;
 
@@ -102,8 +92,8 @@ public class RecorderUtil implements IRecorderUtil, NativeKeyListener, NativeMou
     }
 
     private void sideLogicHelper() {
-        List<IAction> actions = storage.getList();
-        if (actions != null && !actions.isEmpty()) MainController.getInstance().getScriptTextArea().setText(actions.toString());
+//        List<IAction> actions = storage.getList();
+//        if (actions != null && !actions.isEmpty()) MainController.getInstance().getScriptTextArea().setText(actions.toString());
     }
 
     private long getCoolDown() {

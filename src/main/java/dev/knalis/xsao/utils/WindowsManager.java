@@ -24,12 +24,10 @@ public class WindowsManager {
     }
 
     public void handleWinPick() {
-        System.out.println("WinPicks: " + winPicks);
         if (winPicks) {
             window = User32.INSTANCE.GetForegroundWindow();
             winPicks = false;
             MainController.getInstance().getWinButton().setDisable(false);
-            System.out.println("Window picked: " + getTitle());
         }
     }
 

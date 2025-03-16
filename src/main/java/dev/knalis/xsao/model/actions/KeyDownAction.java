@@ -13,6 +13,8 @@ public class KeyDownAction extends Action implements IAction {
     public void action() {
         if (value instanceof Double) {
             inputManager.keyDown(winMan.getWindow(), ((Double) value).intValue());
+        } else if (value instanceof Integer) {
+            inputManager.keyDown(winMan.getWindow(), (Integer) value);
         }
     }
 

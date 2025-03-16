@@ -25,6 +25,11 @@ public class ActionStorageManager {
 
     public void removeStorage(String name) {
         storages.remove(name);
+        try {
+            saveAll();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void saveAll() throws IOException {
