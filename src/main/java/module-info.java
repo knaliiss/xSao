@@ -6,7 +6,7 @@ module dev.knalis.xsao {
     requires javafx.fxml;
     requires javafx.web;
     requires javafx.swing;
-      // Ensure JavaFX dependencies are correctly added to the module path or build system
+    // Ensure JavaFX dependencies are correctly added to the module path or build system
     requires javafx.media;
 
     // 3rd Party

@@ -56,8 +56,21 @@ javafx {
 shadowJar {
     archiveBaseName = 'xSao'
     archiveVersion = '1.0.0'
+    archiveFileName = 'xSao.jar'
     mainClassName = 'dev.knalis.xsao.xSao'
+
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
+task createResourcesDir {
+    doLast {
+        def resourcesDir = file('build/resources/main')
+        if (!resourcesDir.exists()) {
+            resourcesDir.mkdirs()
+        }
+    }
+}
+
+shadowJar.dependsOn createResourcesDir
 
 test {
     useJUnitPlatform()

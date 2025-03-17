@@ -11,26 +11,22 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.logging.Logger;
 
-import java.io.IOException;
-import java.util.logging.LogManager;
-
 public class xSao extends Application {
-    static Logger logger = Logger.getLogger(xSao.class.getName());
-
+    private static final Logger logger = Logger.getLogger(xSao.class.getName());
+    
     @Override
     public void start(Stage stage) {
         stage.initStyle(StageStyle.TRANSPARENT);
         String fxml = ConfigUtils.getInstance().get("fxml.main");
         SceneLoader sceneLoader = new SceneLoader(fxml, stage);
         sceneLoader.load();
-
     }
 
     public static void main(String[] args) {
-
         try {
             new PlayBind(Integer.parseInt(ConfigUtils.getInstance().get("key.play")));
             new RecordBind(Integer.parseInt(ConfigUtils.getInstance().get("key.record")));
@@ -48,7 +44,5 @@ public class xSao extends Application {
         }
         BindUtil.getInstance().register();
         launch();
-
     }
-
 }

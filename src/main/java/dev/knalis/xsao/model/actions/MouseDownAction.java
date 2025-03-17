@@ -3,6 +3,8 @@ package dev.knalis.xsao.model.actions;
 import dev.knalis.xsao.model.Action;
 import dev.knalis.xsao.interfaces.IAction;
 
+import java.awt.*;
+
 public class MouseDownAction extends Action implements IAction {
 
     public MouseDownAction(Object value) {

@@ -4,6 +4,7 @@ import dev.knalis.xsao.utils.ActionStorageManager;
 import dev.knalis.xsao.utils.WindowsManager;
 import dev.knalis.xsao.utils.binds.PlayBind;
 import dev.knalis.xsao.utils.binds.RecordBind;
+import dev.knalis.xsao.utils.impl.ActionStorage;
 import dev.knalis.xsao.utils.sound.SoundManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -73,13 +74,14 @@ public class MainController {
         scriptsComboBox.getSelectionModel().selectFirst();
         scriptsComboBox.setOnAction(event -> {
             String selected = scriptsComboBox.getSelectionModel().getSelectedItem();
-            if (selected != null) scriptTextArea.setText(
-                    ActionStorageManager.getInstance()
-                            .getStorage(selected)
-                            .getList()
-                            .toString()
-            );
-
+            if (selected != null) {
+                ActionStorage storage = ActionStorageManager.getInstance().getStorage(selected);
+                if (storage != null) {
+                    scriptTextArea.setText(storage.getList().toString());
+                } else {
+                    System.err.println("Storage with name " + selected + " does not exist.");
+                }
+            }
         });
     }
 
@@ -133,8 +135,8 @@ public class MainController {
         if (name.isEmpty()) return;
 
         scriptsComboBox.getItems().add(name);
-        scriptsComboBox.getSelectionModel().select(name);
         ActionStorageManager.getInstance().createStorage(name);
+        scriptsComboBox.getSelectionModel().select(name);
         nameTextField.clear();
     }
 

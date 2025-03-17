@@ -41,7 +41,6 @@ public class PlayerUtil implements IPlayerUtil {
 
     @Override
     public void stopPlaying() {
-        System.out.println(PlayBind.isPlaying());
         if (playingThread != null && playingThread.isAlive()) {
             playingThread.interrupt();
             playingThread = null;

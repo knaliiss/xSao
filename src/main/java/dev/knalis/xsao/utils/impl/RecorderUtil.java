@@ -37,6 +37,8 @@ public class RecorderUtil implements IRecorderUtil, NativeKeyListener, NativeMou
         }
         GlobalScreen.addNativeKeyListener(this);
         GlobalScreen.addNativeMouseListener(this);
+
+        storage.add(new SleepAction(getCoolDown()));
     }
 
     @Override
